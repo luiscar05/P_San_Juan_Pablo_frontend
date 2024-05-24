@@ -4,11 +4,13 @@ import Sacramentos from "../components/Sacramentos";
 import Eucaristias from "../components/Eucaristias";
 import Header from "../components/Header"
 import Loader from "../components/Loader";
+import Grupos from "../components/Grupos";
 
 function Index() {
     const inicioRef = useRef(null);
     const sacramentosRef = useRef(null);
     const eucaristiasRef = useRef(null);
+    const gruposRef= useRef(null);
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isActive, setIsActive] = useState(false);
@@ -62,7 +64,8 @@ function Index() {
               <Header 
               Inicio={() => scrollToComponent(inicioRef)} 
               Sacramentos={() => scrollToComponent(sacramentosRef)} 
-              Eucaristias={()=>scrollToComponent(eucaristiasRef)}></Header>
+              Eucaristias={()=>scrollToComponent(eucaristiasRef)}
+              Grupos={()=>scrollToComponent(gruposRef)}> </Header>
             </header>
             <main>
                 <section ref={inicioRef}>
@@ -73,6 +76,9 @@ function Index() {
                 </section>
                 <section ref={eucaristiasRef}>
                     <Eucaristias />
+                </section>
+                <section ref={gruposRef}>
+                    <Grupos />
                 </section>
                 
             </main>

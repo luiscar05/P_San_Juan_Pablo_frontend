@@ -53,6 +53,9 @@ function Header(ComponentPage) {
                         <li onClick={ComponentPage.Eucaristias}>
                             Eucaristias
                         </li>
+                        <li onClick={ComponentPage.Grupos}>
+                            Grupos
+                        </li>
                     </ul>
                 </nav>
         </>

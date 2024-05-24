@@ -33,7 +33,7 @@ function Eucaristias() {
                 ]
                 SiguienteEucaristia = misasDomingo.find(mass=> mass >now)|| new Date(now.setDate(now.getDay()+1)).setHours(19,0,0,0)
             }else{
-                SiguienteEucaristia.setHours(11,0,0,0)
+                SiguienteEucaristia.setHours(19,0,0,0)
                 if(now >= SiguienteEucaristia){
                     SiguienteEucaristia.setDate(SiguienteEucaristia.getDate()+1)
                 }
