@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.SacramentsMain{
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.BoxTitleSacraments{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 25vh;
+}
+.titleSacraments{
+    position: relative;
+    display: flex;
+    gap: 5;
+    color: #ffffff;
+    font-size: 3em;
+    font-family: monospace;
+    cursor: pointer;
+}
+.titleSacraments > span{
+    position: relative;
+    filter: blur(1px);
+    padding: 0 5px;
+    transition: all 0.5s;
+}
+.titleSacraments  span:hover{
+    filter: blur(0px);
+    transition: all 0s;
+    color: red;
+}
+.titleSacraments span i {
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    padding: 0 5px;
+}
+.titleSacraments span:hover i::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 53px #ffffff,36px 53px #ffffff,36px 0 #ffffff;
+    
+}
+.titleSacraments span:hover i::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:8px;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 60px #ffffff,30px 60px #ffffff,30px 0 #ffffff;
+    
+}
+.Bautismo , .Matrimonio{
+    position: relative;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.Bautismo{
+    margin-right: 10%;
+}
+.Matrimonio{
+    margin-left: 10%;
+    
+}
+
+.Bautismo i , .Matrimonio i{
+    position: absolute;
+    inset: 0;
+    border: 1px solid #ffffff;
+    transition: 0.5s ;
+    
+}
+.Bautismo i:nth-child(1) , .Matrimonio i:nth-child(1){
+    animation: animate 5s linear infinite;
+}
+.Bautismo i:nth-child(2), .Matrimonio i:nth-child(2){
+    animation: animate 7s linear infinite;
+}
+.Bautismo i:nth-child(3) , .Matrimonio i:nth-child(3){
+    animation: animate4 11s linear infinite;
+}
+
+.Bautismo:hover i , .Matrimonio:hover i{
+    border: 6px solid var(--clr);
+    filter: drop-shadow(0 0 12px var(--clr));
+}
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes animate4 {
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+figure{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px ;
+    overflow: hidden;
+    
+}
+.ImgBautismo , .ImgMatrimonio{
+    width: 100%;
+    height: 90%;
+    mask-image: linear-gradient(#181819 80%, transparent );
+    border-radius: 6px;
+}
+.Bautismo figure .capa, .Matrimonio figure .capa {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    top: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 500ms ease-out;
+    border-radius: 6px;
+}
+.Bautismo:hover figure .capa , .Matrimonio:hover figure .capa{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.285);
+    top: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: all 500ms ease-out;
+}

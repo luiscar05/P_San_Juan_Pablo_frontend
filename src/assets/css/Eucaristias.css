@@ -1,0 +1,216 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:  rgb(20,19,19);
+}
+.Eucaristias{
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    margin-top:-40px ;
+}
+#FechasInactivas{
+    max-width: 90%;
+    height: auto;
+   
+    border-radius: 6px;
+    bottom: unset;
+    transition: all 0.5s linear;
+    margin: 0 10px 0px  30px;
+    
+    /* box-shadow: -1px 1px 18px rgb(218, 217, 217); */
+    /* animation:colors 5s ease-in infinite;  */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+}
+.imgTemplo{
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    top:-50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5px;
+}
+
+.imgTemplo img{
+    width: 30%;
+    filter: drop-shadow(-10px -1px  8px #f8f680);
+}
+
+@keyframes colors {
+    0%{
+        box-shadow: -1px 1px 18px rgb(218, 217, 217);
+    }
+    50%{
+        box-shadow:-1px 1px 18px #ffbb00;
+    }
+    100%{
+        box-shadow: -1px 1px 18px #c61313;
+    }
+}
+.BoxTitleSacraments{
+    margin-top:15px ;
+}
+
+.TitleEucaristia{
+    position: relative;
+    top: -18px;
+    display: flex;
+    color: #ffffff;
+    font-size: 3em;
+    font-family: monospace;
+    cursor: pointer;
+}
+.TitleEucaristia > span{
+    position: relative;
+    filter: blur(1px);
+    padding: 0 5px;
+    transition: all 0.5s;
+}
+.TitleEucaristia  span:hover{
+    filter: blur(0px);
+    transition: all 0s;
+    color: red;
+    text-align: center;
+}
+.TitleEucaristia span i {
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    padding: 0 5px;
+}
+.TitleEucaristia span:hover i::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 2px;
+    height: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 53px #ffffff,36px 53px #ffffff,36px 0 #ffffff;
+    
+}
+.TitleEucaristia span:hover i::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:8px;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 60px #ffffff,30px 60px #ffffff,30px 0 #ffffff;
+    
+}
+.infoEucaristia{
+    margin-top:-30px;
+    width: 100%;
+    height: auto;
+    
+    padding: 0 50px;
+}
+.infoEucaristia h4 {
+    color: white;
+    font-size: 1.5em;
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+.infoEucaristia h5 {
+    color: white;
+    font-size: 1em;
+    font-family: monospace;
+    padding: 2px 20px;
+}
+#time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 70vh;
+    margin-top:-20%;
+    margin-left: 15px;
+    filter: drop-shadow(2px 2px  8px #26788b);
+}
+#time .circule {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+#time .circule::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 10px solid #1b1a1c;
+    border-radius: 50%;
+}
+#time .circule::after{
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #2f2e33;
+    border-radius: 50%;
+    border: 15px solid #4d4c51;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.25),0 10px 10px rgba(0, 0, 0, 0.75),0 -2px 2px rgba(255, 255, 255, 0.5), inset 0 4px 2px rgba(0, 0, 0, 0.25), inset 0 -2px 2px  rgba(255, 255, 255, 0.5) ;
+}
+#time .circule svg {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);    
+}
+#time .circule svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 8;
+    stroke: var(--clr);
+    stroke-linecap: round;
+    transform: translate(5px , 5px);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440; 
+}
+#time div{
+    position: absolute;
+    text-align: center;
+    font-weight: 500;
+    color: var(--clr);
+    z-index: 100000;
+    font-size: 1.6em;
+    transform: translateY(-5px);
+}
+#time div span{
+    position: absolute;
+    transform: translateX(-50%) translateY(-15px);
+    font-size: 0.25em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+.NewEucaristia{
+    position: absolute;
+    font-size: 8em;
+    font-family: 500;
+    color: #fff;
+    text-align: center;
+    line-height: 0.6em;
+    z-index: 1000000;
+    display: none;
+}
