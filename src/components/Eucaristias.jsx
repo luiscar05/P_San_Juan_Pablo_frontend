@@ -3,16 +3,6 @@ import { useState,useEffect, useRef } from "react";
 
 function Eucaristias() {
 
-    const [EucaristiaHoras, SetEucaristas]= useState({
-        lunes:"19:00",
-        Martes:"19:00",
-        Miercoles:"19:00",
-        Jueves:"19:00",
-        Viernes:"19:00",
-        Sabado:"19:00",
-    })
-
-
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -27,7 +17,31 @@ function Eucaristias() {
 
 
     useEffect(() => {
-        const endDate = new Date('2024-05-24T19:00:00');
+
+        const NuevaEucaristia = ()=> {
+            const now = new Date();
+            const diaSemana = now.getDay();
+            let SiguienteEucaristia = new Date(now)
+           
+            if(diaSemana=== 0){
+                const misasDomingo = [
+                    new Date(now.getFullYear(),now.getMonth(),now.getDate(),7,0,0),
+                    new Date(now.getFullYear(),now.getMonth(),now.getDate(),10,0,0),
+                    new Date(now.getFullYear(),now.getMonth(),now.getDate(),12,0,0),
+                    new Date(now.getFullYear(),now.getMonth(),now.getDate(),17,30,0),
+                    new Date(now.getFullYear(),now.getMonth(),now.getDate(),19,0,0),
+                ]
+                SiguienteEucaristia = misasDomingo.find(mass=> mass >now)|| new Date(now.setDate(now.getDay()+1)).setHours(19,0,0,0)
+            }else{
+                SiguienteEucaristia.setHours(11,0,0,0)
+                if(now >= SiguienteEucaristia){
+                    SiguienteEucaristia.setDate(SiguienteEucaristia.getDate()+1)
+                }
+            }
+
+            return SiguienteEucaristia
+        }
+        const endDate = NuevaEucaristia();
 
         const updateCountdown = () => {
             const now = new Date();
@@ -35,29 +49,7 @@ function Eucaristias() {
 
             const distance = endDate.getTime() - now.getTime();
 
-            
-
-            /* switch (now.getUTCDay) {
-                case "0":
-                    console.log("Domingo");
-
-                    break;
-                case "1":
-                    console.log("Lunes");
-                case "2":
-                    console.log("Martes");
-                case "3":
-                    console.log("miercoles");
-                case "4":
-                    console.log("Jueves");
-                case "5":
-                    console.log("Viernes");
-                case "6":
-                    console.log("Sabado");
-                
-                default:
-                    break;
-            } */
+        
 
             if (distance < 0) {
                 clearInterval(intervalId);
