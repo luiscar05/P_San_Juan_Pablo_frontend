@@ -13,6 +13,25 @@ function Grupos () {
                 <span><i></i>s</span>
             </h4>
         </div>
+        {/* 
+        niños grupos
+            semillas emaus
+            infacia misionera
+            monaguillos 
+
+        jovenes grupos
+            Grupos Juvenil
+            Revolucion Juvenil
+            Jovenes Universitarios
+
+        adultos y parejas
+            Emaus hombre
+            Emaus Mujeres 
+            Emaus Parejas 
+            Sagrada Familia 
+            Madrugadores 
+            Ministerio Musica 
+         */}
         </>
     )
 }
