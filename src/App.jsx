@@ -1,12 +1,14 @@
-import React from 'react'
-import Index  from './pages'
-
+import React, {useState,lazy,Suspense} from 'react'
+const Index = lazy(() => import('./pages'));
+import Loader from './components/Loader';
 function App() {
   
 
   return (
     <>
-      <Index/>
+      <Suspense fallback={<Loader/>}>
+        <Index/>
+      </Suspense>
     </>
   )
 }

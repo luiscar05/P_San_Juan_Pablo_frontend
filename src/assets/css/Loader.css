@@ -10,6 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(19,19,20);
 }
 
 .boxMainLoader {
@@ -17,7 +18,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
 }
 
 .ring {

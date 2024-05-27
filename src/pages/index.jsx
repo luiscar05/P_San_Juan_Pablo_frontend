@@ -1,10 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect , Suspense,lazy} from "react";
 import Inicio from "../components/inicio";
 import Sacramentos from "../components/Sacramentos";
 import Eucaristias from "../components/Eucaristias";
 import Header from "../components/Header"
 import Loader from "../components/Loader";
 import Grupos from "../components/Grupos";
+
+const loader = lazy(() => import("../components/Loader"));
 
 function Index() {
     const inicioRef = useRef(null);
@@ -61,15 +63,22 @@ function Index() {
             <link rel="stylesheet" href="src\assets\css\style.css" />
            
             <header>
-              <Header 
-              Inicio={() => scrollToComponent(inicioRef)} 
-              Sacramentos={() => scrollToComponent(sacramentosRef)} 
-              Eucaristias={()=>scrollToComponent(eucaristiasRef)}
-              Grupos={()=>scrollToComponent(gruposRef)}> </Header>
+                <Suspense fallback={<Loader />}>
+
+                    <Header 
+                        Inicio={() => scrollToComponent(inicioRef)} 
+                        Sacramentos={() => scrollToComponent(sacramentosRef)} 
+                        Eucaristias={()=>scrollToComponent(eucaristiasRef)}
+                        Grupos={()=>scrollToComponent(gruposRef)}> 
+                    </Header>
+                </Suspense>
             </header>
             <main>
                 <section ref={inicioRef}>
+                <Suspense fallback={<Loader />}>
                     <Inicio />
+
+                </Suspense>  
                 </section>
                 <section ref={sacramentosRef}>
                     <Sacramentos />
@@ -79,6 +88,9 @@ function Index() {
                 </section>
                 <section ref={gruposRef}>
                     <Grupos />
+                </section>
+                <section >
+                    <Loader />
                 </section>
                 
             </main>
