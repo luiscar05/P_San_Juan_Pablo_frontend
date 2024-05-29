@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 
 function Header(ComponentPage) {
    /*  const inicioRef = useRef(null);
@@ -55,6 +55,12 @@ function Header(ComponentPage) {
                         </li>
                         <li onClick={ComponentPage.Grupos}>
                             Grupos
+                        </li>
+
+                        <li>
+                            <button>
+                                <Link to={'./Login'}>Login</Link>
+                            </button>
                         </li>
                     </ul>
                 </nav>
