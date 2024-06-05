@@ -57,11 +57,16 @@ function Header(ComponentPage) {
                             Grupos
                         </li>
 
-                        <li>
-                            <button>
-                                <Link to={'./Login'}>Login</Link>
-                            </button>
-                        </li>
+                       {/*  <Link to={'./Login'} style={{"textDecoration":"none"}}> */}
+                            <a  className="ButtonA" style={{ '--clr': '#1e9bff' }}>
+                                <span>
+                                <Link to={'./Login'} style={{"textDecoration":"none"}}> 
+                                 Login
+                                 </Link>
+                                </span>
+                                <i className="CuadroI"></i>
+                            </a>
+                        {/* </Link> */}
                     </ul>
                 </nav>
         </>
