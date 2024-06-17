@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
-import api from "../components/Api"
-
-
+import Api from "../components/Api.jsx";
 
 
 const Login = () => {
@@ -19,12 +17,11 @@ const Login = () => {
             [name]: name === "Cedula" ? parseInt(value) : value,
         });
     };
-
     const handleForm = async (event) => {
         event.preventDefault();
         console.log(values);
         try {
-            let responseLogin = await api.post("auth", {
+            let responseLogin = await Api.post("auth", {
                 Cedula: values.Cedula,
                 Contrasena: values.Contrasena
             });
@@ -65,7 +62,7 @@ const Login = () => {
                         <span>
                             
                         </span>
-                        <input type="number" name="Cedula" value={values.Cedula} onChange={handleInput} placeholder="cedula" />
+                        <input type="text" name="Cedula" value={values.Cedula} onChange={handleInput} placeholder="cedula" />
                     </div>
                     <div className="inputBx">
                         <span>
