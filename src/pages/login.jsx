@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Api from "../components/Api.jsx";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/userSlice.js";
 
 
 const Login = () => {
+
+    const dispatch = useDispatch()
     const [values, setValues] = useState({
         Cedula: "",
         Contrasena: ""
     });
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
+    const [Credenciales, setCredenciales]=useState(false)
 
     const handleInput = (event) => {
         const { name, value } = event.target;
@@ -25,19 +30,23 @@ const Login = () => {
                 Cedula: values.Cedula,
                 Contrasena: values.Contrasena
             });
-            
-            setUser(responseLogin.data);
+
+            console.log(responseLogin.data)
+          dispatch(addUser(responseLogin.data)) 
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
+            setCredenciales(true)
+
         }
     };
 
     useEffect(() => {
         if (user) {
             console.log(user.access_token, "usuario que inició sesión");
-            window.location.href = '/'
         }
     }, [user,]);
+
+
 
     return (
         <>
@@ -57,6 +66,7 @@ const Login = () => {
             <div className="box">
             
                 <form method="post" onSubmit={handleForm}>
+                    {Credenciales && <h4>Error en las credenciales</h4>}  
                     <h2>Login</h2>
                     <div className="inputBx">
                         <span>

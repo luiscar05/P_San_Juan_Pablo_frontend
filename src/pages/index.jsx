@@ -1,11 +1,6 @@
-import React, { useRef, useState, useEffect , Suspense,lazy} from "react";
-/* import Inicio from "../components/inicio"; */
-/* import Sacramentos from "../components/Sacramentos";
-import Eucaristias from "../components/Eucaristias";
-import Header from "../components/Header"
-
-import Grupos from "../components/Grupos"; */
+import React, { useRef, useState, useEffect , Suspense,lazy, useContext} from "react";
 import Loader from "../components/Loader";
+
 const Inicio = lazy(() => import("../components/inicio"));
 const Sacramentos = lazy(() => import("../components/Sacramentos"));
 const Eucaristias = lazy(() => import("../components/Eucaristias"));
@@ -22,7 +17,6 @@ function Index() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isActive, setIsActive] = useState(false);
     
-
     const scrollToComponent = (ref) => {
         if (ref.current) {
             ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -62,7 +56,6 @@ function Index() {
      // Dependencia de scrollPosition para actualizar el valor
 
     console.log(scrollPosition, "esto es scroll");
-
     return (
         <>
             <link rel="stylesheet" href="src\assets\css\style.css" />

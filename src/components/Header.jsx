@@ -1,11 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function Header(ComponentPage) {
-   /*  const inicioRef = useRef(null);
-    const sacramentosRef = useRef(null);
-    const eucaristiasRef = useRef(null);
- */
+
+function Header(ComponentPage) { 
+    const User = useSelector((state)=>state.user)
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isActive, setIsActive] = useState(false);
 
@@ -35,6 +34,7 @@ function Header(ComponentPage) {
     }, [scrollPosition]); // Dependencia de scrollPosition para actualizar el valor
 
     console.log(scrollPosition, "esto es scroll");
+    console.log(User,"Usuario Nuevo")
 
     return (
         <>
@@ -42,6 +42,10 @@ function Header(ComponentPage) {
                 <nav className={isActive ? 'NavMainActivo' : 'NavMain'}>
                     <ul className="LogoMenu">
                         <img src="public/LogoParroquia.png" alt="Logo" className="logoParroquia" />
+                    </ul>
+                    <ul>
+                        <li>Nombre:{User.Name}</li>
+                        <li>Rol:{User.Rol}</li>
                     </ul>
                     <ul className="InfoMenu">
                         <li onClick={ComponentPage.Inicio}>
