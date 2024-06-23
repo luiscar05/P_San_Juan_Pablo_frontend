@@ -7,7 +7,7 @@ const initialState = {
 }
 export const userSlice = createSlice({
     name:"user",
-    initialState,
+    initialState: null,
     reducers:{
         addUser:(state,action)=>{
             const {nombre,cedula,rol} = action.payload;
@@ -20,8 +20,12 @@ export const userSlice = createSlice({
             state.Name=Updatename;
             state.Cedula=Updatecedula;
             state.Email=Updateemail;
+        },
+        removeUser: () => {
+            return null;
         }
+
     }
 })
-export const {addUser,UpdateUser}=userSlice.actions;
+export const {addUser,UpdateUser,removeUser}=userSlice.actions;
 export default userSlice.reducer;

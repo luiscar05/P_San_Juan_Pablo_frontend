@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate , useNavigate } from "react-router-dom";
 import Api from "../components/Api.jsx";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice.js";
@@ -8,6 +8,7 @@ import { addUser } from "../redux/userSlice.js";
 const Login = () => {
 
     const dispatch = useDispatch()
+    const Navigate= useNavigate()
     const [values, setValues] = useState({
         Cedula: "",
         Contrasena: ""
@@ -33,10 +34,10 @@ const Login = () => {
 
             console.log(responseLogin.data)
           dispatch(addUser(responseLogin.data)) 
+          Navigate("/Agenda")
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
             setCredenciales(true)
-
         }
     };
 

@@ -65,7 +65,7 @@ function Header(ComponentPage) {
                             <a  className="ButtonA" style={{ '--clr': '#1e9bff' }}>
                                 <span>
                                 <Link to={'./Login'} style={{"textDecoration":"none"}}> 
-                                 Login
+                                 {isActive ? "Login" : "Logout"}
                                  </Link>
                                 </span>
                                 <i className="CuadroI"></i>
