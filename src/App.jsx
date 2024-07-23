@@ -6,20 +6,26 @@ import Index from './pages/index';
 import Loader from './components/Loader';
 import { Routes,Route } from 'react-router-dom';
 import { Calendario } from './components/Calendario';
-function App() {
+import { Agenda } from './pages/Agenda';
+import { UserContextProvider } from './components/contex/UserContextProvider';
+/* import { ProtectedRoute } from './components/ProtectedRoute';
+import { useSelector } from 'react-redux'; */
+export function App({}) {
   
-
   return (
     <>
-  <Routes>
+    <UserContextProvider>
+      <Routes>
+      
+        <Route index element={<Index/>}/>
+      
+        <Route path='/Login' element={<Login />}/>
+        <Route path='/Agenda' element={<Agenda/>}/>
     
-      <Route path='/' element={<Index/>}/>
     
-      <Route path='/Login' element={<Login/>}/>
-      <Route path='/Agenda' element={<Calendario/>}/>
-    
-    
-  </Routes>
+      </Routes>
+    </UserContextProvider>
+ 
       {/* <Suspense fallback={<Loader/>}>
         <Index/>
       </Suspense> */}

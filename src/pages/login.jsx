@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Navigate , useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Api from "../components/Api.jsx";
 import { useDispatch } from "react-redux";
-import { addUser } from "../redux/userSlice.js";
+import {App} from "../App.jsx"
+import { UserContext } from "../components/contex/UserContextProvider.jsx";
+/* import { addUser } from "../redux/userSlice.js"; */
 
 
 const Login = () => {
-
-    const dispatch = useDispatch()
+    const {user,setUser}= useContext(UserContext)
+    /* const dispatch = useDispatch() */
     const Navigate= useNavigate()
     const [values, setValues] = useState({
         Cedula: "",
         Contrasena: ""
     });
-    const [user, setUser] = useState();
+    /* const [user, setUser] = useState(); */
     const [Credenciales, setCredenciales]=useState(false)
 
     const handleInput = (event) => {
@@ -32,20 +34,21 @@ const Login = () => {
                 Contrasena: values.Contrasena
             });
 
-            console.log(responseLogin.data)
-          dispatch(addUser(responseLogin.data)) 
-          Navigate("/Agenda")
+           console.log(responseLogin.data,"user") 
+            setUser(responseLogin.data) 
         } catch (error) {
-            console.error("Error al iniciar sesión:", error);
+            console.error("Error al iniciar sesión:", error);  
             setCredenciales(true)
         }
     };
 
     useEffect(() => {
         if (user) {
-            console.log(user.access_token, "usuario que inició sesión");
+            console.log(user, "usuario que inició sesión");
+            
+           Navigate("/Agenda"); /// Redirige a la página de Agenda
         }
-    }, [user,]);
+    }, [user,Navigate]);
 
 
 

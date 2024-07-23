@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect , Suspense,lazy, useContext} from "react";
 import Loader from "../components/Loader";
+import { UserContext , UserContextProvider} from "../components/contex/UserContextProvider";
+/* import { useSelector } from "react-redux"; */
 
 const Inicio = lazy(() => import("../components/inicio"));
 const Sacramentos = lazy(() => import("../components/Sacramentos"));
@@ -9,6 +11,10 @@ const Grupos = lazy(() => import("../components/Grupos"));
 
 
 function Index() {
+    const { user } = useContext(UserContext);
+
+    /* const User = useSelector((state)=>state.user) */
+    /* const {user}=useContext(UserContex) */
     const inicioRef = useRef(null);
     const sacramentosRef = useRef(null);
     const eucaristiasRef = useRef(null);
@@ -16,7 +22,8 @@ function Index() {
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isActive, setIsActive] = useState(false);
-    
+    /* console.log(user,"Usuario Iniciado") */
+    console.log(user,"usuario Iniciado")
     const scrollToComponent = (ref) => {
         if (ref.current) {
             ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -58,6 +65,9 @@ function Index() {
     console.log(scrollPosition, "esto es scroll");
     return (
         <>
+        <UserContextProvider>
+
+        
             <link rel="stylesheet" href="src\assets\css\style.css" />
            
             <header>
@@ -75,7 +85,7 @@ function Index() {
                 <section ref={inicioRef}>
                 <Suspense fallback={<Loader />}>
                     <Inicio />
-
+                    <h2>{user ? `Hola, ${user}` : "Hola"}</h2>
                 </Suspense>  
                 </section>
                 <section ref={sacramentosRef}>
@@ -99,6 +109,7 @@ function Index() {
             <footer>
                 <p>Scroll Position: {scrollPosition}px</p>
             </footer>
+            </UserContextProvider>
         </>
     );
 }
