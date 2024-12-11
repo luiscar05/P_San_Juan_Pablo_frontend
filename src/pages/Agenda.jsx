@@ -15,7 +15,7 @@ export const Agenda = () => {
             {/* <Calendario/> */
             }
             <div>
-                <h1>Usuario{user.nombre}</h1>
+                <h1>Usuario{user}</h1>
             </div>
         </>
     );

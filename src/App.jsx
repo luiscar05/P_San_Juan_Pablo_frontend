@@ -3,6 +3,7 @@ import React, {useState,lazy,Suspense} from 'react'
 
 import Login from './pages/login';
 import Index from './pages/index';
+import Dashboard from './pages/Dasboard';
 import Loader from './components/Loader';
 import { Routes,Route } from 'react-router-dom';
 import { Calendario } from './components/Calendario';
@@ -20,8 +21,8 @@ export function App({}) {
         <Route index element={<Index/>}/>
       
         <Route path='/Login' element={<Login />}/>
-        <Route path='/Agenda' element={<Agenda/>}/>
-    
+        <Route path='/Dashboard' element={<Dashboard/>}/>
+
     
       </Routes>
     </UserContextProvider>

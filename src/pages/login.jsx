@@ -34,8 +34,11 @@ const Login = () => {
                 Contrasena: values.Contrasena
             });
 
-           console.log(responseLogin.data,"user") 
-            setUser(responseLogin.data) 
+            let UserLogin = await Api.get("auth/verify")
+
+
+           console.log(UserLogin,"user") 
+            setUser(UserLogin) 
         } catch (error) {
             console.error("Error al iniciar sesión:", error);  
             setCredenciales(true)
@@ -45,8 +48,9 @@ const Login = () => {
     useEffect(() => {
         if (user) {
             console.log(user, "usuario que inició sesión");
-            
-           Navigate("/Agenda"); /// Redirige a la página de Agenda
+            const userForHistory = { ...user };
+            delete userForHistory.someFunction; // Elimina una función
+            Navigate('/Dashboard'); /// Redirige a la página dl dashboard
         }
     }, [user,Navigate]);
 
